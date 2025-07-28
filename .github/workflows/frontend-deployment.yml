@@ -1,12 +1,17 @@
 name: Frontend Deployment
 on:
   push:
+    paths:
+      - frontend/**
     branches:
       - team5-samikshya
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
 
     steps:
       - uses: actions/checkout@v4

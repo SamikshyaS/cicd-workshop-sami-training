@@ -1,12 +1,17 @@
 name: Backend Deployment
 on:
   push:
-    branches:
-      - team5-samikshya
+  paths:
+    - backend/**
+  branches:
+    - team5-samikshya
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
 
     steps:
       - uses: actions/checkout@v4
