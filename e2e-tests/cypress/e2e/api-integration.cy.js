@@ -93,7 +93,7 @@ describe("API Integration E2E Tests", () => {
     }).then((response) => {
       // Accept either 400 (Bad Request) or 500 (Server Error)
       expect(response.status).to.be.oneOf([400, 500]);
-      expect(response.body).to.have.property("error"); //test
+      expect(response.body).to.have.property("error"); //test//test
     });
   });
 });
