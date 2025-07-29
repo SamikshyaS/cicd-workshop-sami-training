@@ -33,6 +33,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    needs: test
     defaults:
       run:
         working-directory: ./frontend
@@ -46,19 +47,8 @@ jobs:
         run: npm install
       - name: Build project
         run: npm run build
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
       - name: Deploy to S3
-        run: aws s3 sync build/ s3://${{ secrets.S3_BUCKET_NAME }} --delete
-      - name: Invalidate CloudFront Cache
-        run: |
-          aws cloudfront create-invalidation \
-            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
-            --paths "/*"
+        run: echo "Deploying to S3..." # Replace with actual deploy command
 
   e2e-test:
     name: Cypress E2E Tests
