@@ -77,8 +77,8 @@ jobs:
       run:
         working-directory: ./e2e-tests
     env:
-      CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
-      CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
+      CYPRESS_BASE_URL: https://t5.cicdws.bibek-mishra.com.np/
+      CYPRESS_API_URL: https://t5-api.cicdws.bibek-mishra.com.np/api/health
 
     steps:
       - uses: actions/checkout@v4
