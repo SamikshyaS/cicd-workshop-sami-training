@@ -100,4 +100,4 @@ jobs:
           working-directory: ./e2e-tests
           config: baseUrl=${{env.CYPRESS_BASE_URL}}
           start: "" # No local server
-          wait-on: "" # Skip waiting, since we’re testing the deployed URL
+          wait-on: ""

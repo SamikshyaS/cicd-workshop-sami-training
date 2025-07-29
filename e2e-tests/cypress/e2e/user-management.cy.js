@@ -1,4 +1,4 @@
-describe("User Management E2E Tests from sam", () => {
+describe("User Management E2E Tests", () => {
   // Store created user IDs for cleanup
   const createdUserIds = [];
 
@@ -25,7 +25,7 @@ describe("User Management E2E Tests from sam", () => {
     createdUserIds.length = 0;
   });
 
-  it("should display the application title --sam", () => {
+  it("should display the application title", () => {
     cy.contains("CICD Workshop - User Management").should("be.visible");
   });
 
@@ -52,7 +52,7 @@ describe("User Management E2E Tests from sam", () => {
     });
   });
 
-  it("should load and display existing users--sam", () => {
+  it("should load and display existing users", () => {
     // Create user via API to ensure it exists
     cy.request("POST", `${Cypress.env("apiUrl")}/users`, {
       name: uniqueName,
@@ -78,7 +78,7 @@ describe("User Management E2E Tests from sam", () => {
     });
   });
 
-  it("should delete a user--sam", () => {
+  it("should delete a user", () => {
     // Create a unique user name with timestamp to ensure uniqueness
     const uniqueName = `Test Delete User ${Date.now()}`;
     const uniqueEmail = `delete-test-${Date.now()}@example.com`;
@@ -108,7 +108,7 @@ describe("User Management E2E Tests from sam", () => {
       });
   });
 
-  it("should handle form validation--sam", () => {
+  it("should handle form validation", () => {
     // Clear any existing values in the form
     cy.get('[data-testid="name-input"]').clear();
     cy.get('[data-testid="email-input"]').clear();
@@ -127,7 +127,7 @@ describe("User Management E2E Tests from sam", () => {
       });
   });
 
-  it("should handle API errors gracefully--sam", () => {
+  it("should handle API errors gracefully", () => {
     // Verify no error messages are currently displayed
     cy.get("body").should("not.contain", "Failed to load users");
     cy.get("body").should("not.contain", "Failed to create user");
